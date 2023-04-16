@@ -11,7 +11,7 @@
 <body>
 <section class = "header-contact">
         <nav>
-            <a href="../index.html fadeLoad1"><img class="fadeLoad1"src="../logo.png"></a>
+            <a href="../index.html"><img class="fadeLoad1"src="../logo.png"></a>
             <div class = "nav-links fadeLoad">
                 <ul>
                     <li><a href="../index.html">HOME</a></li>
@@ -24,7 +24,7 @@
     <div class = "text-box fadeLoad1">
         <h1>Contact Us</h1>
         <div class="paddingDiv"></div>
-        <label for="imgpicker" class="hero-btn">
+        <label for="scrollButton" class="hero-btn">
             <h2>Get Started</h2>
         </label>
         <button id="scrollButton" class="submitButton"></button>
@@ -67,7 +67,7 @@
     const submit = document.getElementById('submitButton');
     scroll.onclick = function() {
         returnSection.scrollIntoView({behavior: "smooth", block: "start"});
-    }
+    };
     submit.onclick = function() {
         const del = document.getElementById('delfrom');
         del.removeChild(document.getElementById('deletable'));
@@ -75,6 +75,7 @@
         div.className = "paddingDiv2";
         const h2 = document.createElement('h2');
         h2.innerText = "Thank you for submitting!";
+        h2.className = "lastMinFix"
         div.appendChild(h2);
         del.appendChild(div);
         const div2 = document.createElement('div');

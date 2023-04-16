@@ -135,6 +135,11 @@ nav img{
     justify-content: space-between;
 }
 
+.lastMinFix {
+    margin-left: 32%;
+}
+
+
 .course-col{
     flex-basis: 30%;
     background: #3f3f9f;
@@ -302,13 +307,17 @@ input[type="file"] {
 }
 
 .centered div {
-    margin: 0 auto;
+    margin: auto;
     border: 3px solid rgba(0, 128, 0, 0);
 }
 
 h1{
     font-size: 36px;
     font-weight: 600;
+}
+h2{
+
+    color: #ffffff;
 }
 p{
     font-size: 14px;
