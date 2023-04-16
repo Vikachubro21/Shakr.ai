@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name ="viewport" content = "with=device-width, initial-scale = 1.0">
+        <title>Generative AI Wallpaper generator</title>
+        <link rel = "stylesheet" href ="../style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+<body>
+<section class = "header-submission">
+        <nav>
+            <a class ="fadeLoad1" href="../index.html"><img class="fadeLoad1" src="../logo.png"></a>
+            <div class = "nav-links fadeLoad1">
+                <ul>
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="submission.html">GENERATE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                </ul>
+            </div>
+        </nav>
+    <div class = "text-box fadeLoad1">
+        <h1>Place your image here...</h1>
+        <div class="paddingDiv"></div>
+        <label for="imgpicker" class="hero-btn">
+            <h2>Choose your file!</h2>
+        </label>
+        <input type="file" id="imgpicker" accept=".png,.jpg,.jpeg,.gif"></input>
+        <div class="paddingDiv"></div>
+    </div>
+</section>
+<div class="preview">
+</div>
+<script>
+    const input = document.querySelector('input');
+    const preview = document.querySelector('.preview');
+    input.addEventListener('change', updateImageDisplay);
+
+    function updateImageDisplay() {
+        while(preview.firstChild) {
+            preview.removeChild(preview.firstChild);
+        }
+        
+        const section = document.createElement('section');
+        section.className = "Message"
+        const curFiles = input.files;
+        if (curFiles.length === 0) {} 
+        else if (curFiles.length >= 2){
+            const para = document.createElement('p');
+            para.textContent = 'Selected too many files!';
+            section.appendChild(para);
+        }
+        else {
+
+            for (const file of curFiles) {
+            const listItem = document.createElement('div');
+            const para = document.createElement('p');
+            if (validFileType(file)) {
+                para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
+                const image = document.createElement('img');
+                image.onload = function() {
+                image.height = 400;
+                image.width = 400/image.naturalHeight*(image.naturalWidth);
+                }
+                image.src = URL.createObjectURL(file);
+                listItem.appendChild(image);
+                listItem.appendChild(para);
+
+                const div = document.createElement('div')
+                div.className = "paddingDiv"
+                const submit = document.createElement('label');
+                submit.htmlFor = "generate";
+                submit.className = "hero-btn"
+                const head = document.createElement('h2');
+                head.innerText = "Generate!";
+                submit.appendChild(head);
+
+                const submitButton = document.createElement('button');
+                submitButton.className = "submitButton";
+                submitButton.onclick = new function() {
+
+                }
+                section.appendChild(listItem);
+                section.appendChild(div);
+                section.appendChild(submit);
+                section.appendChild(submitButton);
+                section.appendChild(div);
+                
+            } else {
+                para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
+                listItem.appendChild(para);
+                section.appendChild(listItem);
+            }
+            preview.appendChild(section);
+            }
+        }
+        setTimeout(() => { preview.scrollIntoView({behavior: "smooth", block: "start"}); }, 50);
+        
+    }
+    const fileTypes = [
+  "image/apng",
+  "image/bmp",
+  "image/gif",
+  "image/jpeg",
+  "image/pjpeg",
+  "image/png",
+  "image/svg+xml",
+  "image/tiff",
+  "image/webp",
+  "image/x-icon"
+];
+
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+
+function returnFileSize(number) {
+  if (number < 1024) {
+    return `${number} bytes`;
+  } else if (number >= 1024 && number < 1048576) {
+    return `${(number / 1024).toFixed(1)} KB`;
+  } else if (number >= 1048576) {
+    return `${(number / 1048576).toFixed(1)} MB`;
+  }
+}
+
+</script>
+<footer>
+    <p class="copyright">© Copyright Bar</p>
+</footer>
+</body>
+</html>

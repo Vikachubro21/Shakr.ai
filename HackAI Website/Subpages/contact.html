@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name ="viewport" content = "with=device-width, initial-scale = 1.0">
+        <title>Generative AI Wallpaper generator</title>
+        <link rel = "stylesheet" href ="../style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+<body>
+<section class = "header-contact">
+        <nav>
+            <a href="../index.html fadeLoad1"><img class="fadeLoad1"src="../logo.png"></a>
+            <div class = "nav-links fadeLoad">
+                <ul>
+                    <li><a href="../index.html">HOME</a></li>
+                    <li><a href="submission.html">GENERATE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                </ul>
+            </div>
+        </nav>
+    <div class = "text-box fadeLoad1">
+        <h1>Contact Us</h1>
+        <div class="paddingDiv"></div>
+        <label for="imgpicker" class="hero-btn">
+            <h2>Get Started</h2>
+        </label>
+        <button id="scrollButton" class="submitButton"></button>
+        <div class="paddingDiv"></div>
+    </div>
+</section>
+<section id="boy">
+    <div class="centered" id="delfrom">
+        <div id="deletable">
+            <div class="form">
+                <label name="name">Full Name:</label>
+                <input class = "centered" type="text" id="name" name="name" required size="20"></input>
+            </div>
+            <div class="form">
+                <label name="email">Email:</label>
+                <input class = "centered" type="text" id="name" name="name" required size="60"></input>
+            </div>
+            <div class="form">
+                <label name="phone">Phone Number:</label>
+                <input class = "centered" type="text" id="name" name="name" required size="40"></input>
+            </div>
+            <div class="form">
+                <label class="form" name="question">Question:</label>
+                <textarea class = "centered" type="text" id="name" name="name" required size="80" style="height: 200px"></textarea>
+            </div>
+            <div>
+                <label for="submitButton" class="hero-btn">Send!</label>
+                <button id="submitButton" class="submitButton"></button>
+            </div>
+            <div class="paddingDiv"></div>
+        </div>
+    </div>
+</section>
+<div class="preview">
+</div>
+
+<script>
+    const scroll = document.getElementById('scrollButton');
+    const returnSection = document.getElementById('boy');
+    const submit = document.getElementById('submitButton');
+    scroll.onclick = function() {
+        returnSection.scrollIntoView({behavior: "smooth", block: "start"});
+    }
+    submit.onclick = function() {
+        const del = document.getElementById('delfrom');
+        del.removeChild(document.getElementById('deletable'));
+        const div = document.createElement('div');
+        div.className = "paddingDiv2";
+        const h2 = document.createElement('h2');
+        h2.innerText = "Thank you for submitting!";
+        div.appendChild(h2);
+        del.appendChild(div);
+        const div2 = document.createElement('div');
+        div2.className = "paddingDiv2";
+        del.appendChild(div2);
+    }
+</script>
+<footer>
+    <p class="copyright">© Copyright Bar</p>
+</footer>
+</body>
+</html>
